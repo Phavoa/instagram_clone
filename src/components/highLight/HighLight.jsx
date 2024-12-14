@@ -1,6 +1,6 @@
 const HighLight = () => {
   return (
-    <div>HighLight</div>
+    <div>This is Joy HighLight</div>
   )
 }
 
