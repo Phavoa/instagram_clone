@@ -1,6 +1,10 @@
+import Posts from "./components/posts/Posts"
+
 const App = () => {
   return (
-    <div>App</div>
+    <div>
+      <Posts />
+    </div>
   )
 }
 

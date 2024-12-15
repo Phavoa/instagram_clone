@@ -1,0 +1,366 @@
+/* Root Variables */
+:root {
+  --color-primary: #0095f6;
+  --color-secondary: #8e8e8e;
+  --color-bg: #fafafa;
+  --color-text: #262626;
+  --color-border: #dbdbdb;
+  --color-hover: #f5f5f5;
+  --color-glass: rgba(255, 255, 255, 0.6);
+  --color-glass-dark: rgba(18, 18, 18, 0.8);
+  --dark-bg: #121212;
+  --dark-text: #f5f5f5;
+  --dark-border: #3a3a3a;
+  --dark-hover: #1c1c1c;
+  --gradient-primary: linear-gradient(135deg, #0095f6, #6db3f2);
+
+  /* Typography */
+  --font-family: "Helvetica Neue", Arial, sans-serif;
+  --font-size-base: 16px;
+  --font-size-small: 14px;
+  --font-size-large: 18px;
+
+  /* Spacing and Radius */
+  --border-radius: 12px;
+  --spacing-large: 20px;
+  --spacing-small: 10px;
+
+  /* Animation */
+  --transition-speed: 0.3s;
+  --hover-scale: 1.05;
+}
+
+/* Global Styles */
+body {
+  margin: 0;
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  font-family: inherit;
+  font-size: inherit;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  transition: all var(--transition-speed);
+}
+
+/* Dark Mode */
+body.dark-mode {
+  background-color: var(--dark-bg);
+  color: var(--dark-text);
+}
+
+body.dark-mode .glass-effect {
+  background-color: var(--color-glass-dark);
+}
+
+body.dark-mode .modal-overlay {
+  background-color: rgba(0, 0, 0, 0.85);
+}
+
+/* Profile Page */
+.post-page {
+  max-width: 935px;
+  margin: 0 auto;
+}
+
+/* Profile Header */
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-large);
+  margin-bottom: var(--spacing-large);
+  flex-wrap: wrap;
+}
+
+.profile-image {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--color-border);
+  transition: transform var(--transition-speed);
+}
+
+.profile-image:hover {
+  transform: scale(var(--hover-scale));
+}
+
+.profile-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-small);
+}
+
+.profile-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-small);
+  flex-wrap: wrap;
+}
+
+ .profile-meta .username {
+  font-weight: bold;
+  font-size: var(--font-size-large);
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.profile-stats {
+  display: flex;
+  gap: var(--spacing-large);
+  font-size: var(--font-size-small);
+  color: var(--color-secondary);
+}
+
+.profile-stats div strong {
+  color: var(--color-text);
+}
+
+/* Buttons */
+.follow-btn {
+  background-color: var(--color-primary);
+  color: white;
+  padding: 10px 20px;
+  border-radius: var(--border-radius);
+  font-weight: bold;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color var(--transition-speed),
+    transform var(--transition-speed);
+}
+
+.follow-btn.following {
+  background: white;
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+}
+
+.follow-btn:hover {
+  transform: scale(var(--hover-scale));
+  background-color: var(--color-hover);
+  color: var(--color-primary);
+}
+
+/* Post Navigation */
+.post-navigation {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-large);
+  border-top: 1px solid var(--color-border);
+  margin: var(--spacing-large) 0;
+}
+
+.post-navigation button {
+  background: none;
+  color: var(--color-secondary);
+  padding: var(--spacing-large) 20px;
+  margin-top: -2px;
+  font-size: var(--font-size-small);
+  transition: color var(--transition-speed), transform var(--transition-speed);
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.post-navigation button.active {
+  color: var(--color-text);
+  border-top: 2px solid var(--color-text);
+}
+
+.post-navigation button:hover {
+  color: var(--color-primary);
+  transform: translateY(-1px);
+}
+
+/* Post Grid */
+.post-grid {
+  display: grid;
+  grid-template-columns: repeat(
+    3,
+    1fr
+  ); /* Fixed 3 columns for all screen sizes */
+  gap: var(--spacing-large);
+}
+
+.post-item {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  transition: transform var(--transition-speed);
+}
+
+.post-content {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+
+.post-content:hover {
+  transform: scale(1.02);
+}
+
+/* Video Thumbnails */
+.video-thumbnail {
+  position: relative;
+  overflow: hidden;
+}
+
+.video-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: rgba(136, 111, 111, 0.9);
+  font-size: 50px;
+  display: none;
+}
+
+.video-thumbnail:hover .video-overlay {
+  display: block;
+}
+
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: black;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  border-radius: var(--spacing-large);
+  display: flex;
+  /* min-width: 50%; */
+  max-width: 90%;
+  
+}
+
+.modal-image,
+.modal-video {
+  /* flex: 1; */
+  max-height: 70vh;
+  border-radius:var(--border-radius) 0 0 var(--border-radius);
+
+}
+
+.modal-caption {
+  flex: 1;
+  font-size: var(--font-size-small) ;
+  color: var(--color-secondary);
+  background-color: var(--color-bg);
+  border-radius: 0 var(--border-radius) var(--border-radius) 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 400px;
+
+}
+
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+}
+
+.modal-next,
+.modal-prev {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-bg);
+  border-radius: 50%;
+  color: black;
+  font-size: 20px;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+
+/* Utility Classes */
+.hidden {
+  display: none;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (max-width: 768px) {
+  .profile-page {
+    padding: 0;
+  }
+
+  .post-grid {
+    margin-top: -20px;
+    gap: 2px;
+  }
+
+  .post-item {
+    height: 200px;
+  }
+  
+  .modal-content {
+    display: block;
+    background-color: transparent;
+    width: 80%;
+  }
+
+
+  .modal-image,
+  .modal-video,
+  .modal-caption{
+    min-width: 100%;
+    max-height: 90vh;
+    max-width: 75%;
+    border-radius: var(--border-radius);
+  }
+
+  .modal-image,
+  .modal-video {
+
+  }
+  
+  .modal-close {
+    color: black;
+    font-size: 24px;
+  }
+}
