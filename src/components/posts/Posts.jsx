@@ -1,84 +1,56 @@
-import { useState } from "react";
+import { useEffect, useState, useCallback } from "react";
+import PropTypes from "prop-types"; // For props validation
 import "./Posts.css";
 import { FaTh, FaPlayCircle, FaUserTag } from "react-icons/fa";
 
 import PostGrid from "../custom_ui/postGrid/PostGrid";
 import PostModal from "../custom_ui/postModal/PostModal";
-import { postsData } from "../../data/data";
+import { fetchFromApi } from "../../utils/fetchFromApi";
 
-const userData = {
-  username: "tega_dev",
-  name: "Efemiaya Favour",
-  bio: "Full-Stack Developer 🚀 | React & Node.js Enthusiast 💻",
-  profilePic: "https://via.placeholder.com/150",
-  followers: 350,
-  following: 180,
-  posts: 12,
-};
-
-const ProfileHeader = ({ user, isFollowing, onFollowToggle }) => {
-  return (
-    <div className="profile-header">
-      <img
-        src={user.profilePic}
-        alt={`${user.username}'s profile`}
-        className="profile-image"
-      />
-      <div className="profile-details">
-        <div className="profile-meta">
-          <h2 className="profile-username">{user.username}</h2>
-          <button
-            className={`follow-btn ${isFollowing ? "following" : ""}`}
-            onClick={onFollowToggle}
-          >
-            {isFollowing ? "Following" : "Follow"}
-          </button>
-          <button className="settings-btn">⚙️</button>
-        </div>
-        <div className="profile-stats">
-          <div>
-            <strong>{user.posts}</strong> posts
-          </div>
-          <div>
-            <strong>{user.followers + (isFollowing ? 1 : 0)}</strong> followers
-          </div>
-          <div>
-            <strong>{user.following}</strong> following
-          </div>
-        </div>
-        <p className="profile-bio">{user.bio}</p>
-      </div>
-    </div>
-  );
-};
-
-const Posts = () => {
+const Posts = ({ user }) => {
+  const [posts, setPosts] = useState([]);
   const [selectedPost, setSelectedPost] = useState(null);
-  const [isFollowing, setIsFollowing] = useState(false);
   const [activeTab, setActiveTab] = useState("POSTS");
 
-  const handleFollowToggle = () => setIsFollowing(!isFollowing);
+  // Memoized function to fetch posts
+  const fetchPosts = useCallback(async () => {
+    try {
+      const usernameOrId = user?.username || "mrbeast"; // Fallback to "mrbeast"
+      const { data } = await fetchFromApi(`v1.2/posts?username_or_id_or_url=${usernameOrId}`);
+      setPosts(data.items || []); // Safeguard if `data.items` is undefined
+    } catch (error) {
+      console.error("Error fetching posts:", error);
+    }
+  }, [user]);
 
+  // Fetch posts on component mount or when `user` changes
+  useEffect(() => {
+    fetchPosts();
+  }, [fetchPosts]);
+
+  // Filtered posts based on active tab
+  const getFilteredPosts = () => {
+    if (activeTab === "REELS") return posts.filter((p) => p.is_video === true);
+    if (activeTab === "TAGGED") return []; // Placeholder for tagged posts (if needed later)
+    return posts;
+  };
+
+  // Tab content rendering
   const renderTabContent = () => {
-    const filteredPosts =
-      activeTab === "REELS"
-        ? postsData.filter((p) => p.type === "video")
-        : postsData;
-
     if (activeTab === "TAGGED") {
       return <div>Tagged content goes here.</div>;
     }
-
+    const filteredPosts = getFilteredPosts();
     return <PostGrid posts={filteredPosts} onPostClick={setSelectedPost} />;
   };
 
+  // Loading state
+  if (!posts.length) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <div className="post-page">
-      <ProfileHeader
-        user={userData}
-        isFollowing={isFollowing}
-        onFollowToggle={handleFollowToggle}
-      />
       <div className="post-navigation">
         {["POSTS", "REELS", "TAGGED"].map((tab) => (
           <button
@@ -89,16 +61,28 @@ const Posts = () => {
             {tab === "POSTS" && <FaTh />}
             {tab === "REELS" && <FaPlayCircle />}
             {tab === "TAGGED" && <FaUserTag />}
-            {tab}
+            <span>{tab}</span>
           </button>
         ))}
       </div>
       {renderTabContent()}
       {selectedPost && (
-        <PostModal post={selectedPost} onClose={() => setSelectedPost(null)} />
+        <PostModal
+          posts={posts}
+          post={selectedPost}
+          onClose={() => setSelectedPost(null)}
+        />
       )}
     </div>
   );
+};
+
+// Props validation
+Posts.propTypes = {
+  user: PropTypes.shape({
+    username: PropTypes.string,
+    id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  }),
 };
 
 export default Posts;

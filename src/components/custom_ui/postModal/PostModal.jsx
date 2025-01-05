@@ -1,54 +1,54 @@
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import PropTypes from "prop-types";
-import { postsData } from "../../../data/data";
 import PostDetails from "../postDetails/PostDetails";
-
-const PostModal = ({ post, onClose }) => {
+import "./PostModal.css";
+const PostModal = ({ post, onClose, posts }) => {
   const [currentPostId, setCurrentPostId] = useState(post?.id);
 
-  // Find current post by ID
-  const currentPost = postsData.find((p) => p.id === currentPostId);
+  const currentPost = posts.find((p) => p.id === currentPostId);
 
   useEffect(() => {
     if (post?.id !== currentPostId) {
       setCurrentPostId(post?.id);
     }
-  }, [post]); // Correct dependencies
+  }, [post]);
 
-  const currentIndex = postsData.findIndex((p) => p.id === currentPostId);
+  const currentIndex = posts.findIndex((p) => p.id === currentPostId);
 
-  // Keyboard navigation
-  useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (e.key === "ArrowRight" && currentIndex < postsData.length - 1) {
-        setCurrentPostId(postsData[currentIndex + 1].id);
+  const handleKeyDown = useCallback(
+    (e) => {
+      if (["ArrowRight", "ArrowLeft", "Escape"].includes(e.key)) {
+        e.preventDefault();
+      }
+      if (e.key === "ArrowRight" && currentIndex < posts.length - 1) {
+        setCurrentPostId(posts[currentIndex + 1].id);
       }
       if (e.key === "ArrowLeft" && currentIndex > 0) {
-        setCurrentPostId(postsData[currentIndex - 1].id);
+        setCurrentPostId(posts[currentIndex - 1].id);
       }
       if (e.key === "Escape") {
         onClose();
       }
-    };
+    },
+    [currentIndex, posts, onClose]
+  );
 
+  useEffect(() => {
     document.addEventListener("keydown", handleKeyDown);
     return () => document.removeEventListener("keydown", handleKeyDown);
-  }, [currentIndex, onClose]);
-
-
+  }, [handleKeyDown]);
 
   if (!currentPost) return null;
 
   return (
     <div className="modal-overlay" onClick={onClose}>
-      {/* Navigation Buttons */}
       <button
         className="modal-prev"
         onClick={(e) => {
           e.stopPropagation();
           if (currentIndex > 0) {
-            setCurrentPostId(postsData[currentIndex - 1].id);
+            setCurrentPostId(posts[currentIndex - 1].id);
           }
         }}
         disabled={currentIndex === 0}
@@ -58,20 +58,22 @@ const PostModal = ({ post, onClose }) => {
       </button>
 
       <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-        {currentPost.type === "image" ? (
-          <img
-            src={currentPost.content}
-            alt={currentPost.caption || "Image post"}
-            className="modal-image"
-          />
-        ) : (
-          <video
-            src={currentPost.content}
-            controls
-            autoPlay
-            className="modal-video"
-          ></video>
-        )}
+        <div className="video-image">
+          {!currentPost.is_video ? (
+            <img
+              src={currentPost.thumbnail_url || "placeholder-image-url.jpg"}
+              alt={currentPost.caption || "Image post"}
+              className="modal-image"
+            />
+          ) : (
+            <video
+              src={currentPost.video_url || ""}
+              controls
+              autoPlay
+              className="modal-video"
+            ></video>
+          )}
+        </div>
         <PostDetails currentPost={currentPost} />
         <button className="modal-close" onClick={onClose} aria-label="Close">
           ✕
@@ -82,11 +84,11 @@ const PostModal = ({ post, onClose }) => {
         className="modal-next"
         onClick={(e) => {
           e.stopPropagation();
-          if (currentIndex < postsData.length - 1) {
-            setCurrentPostId(postsData[currentIndex + 1].id);
+          if (currentIndex < posts.length - 1) {
+            setCurrentPostId(posts[currentIndex + 1].id);
           }
         }}
-        disabled={currentIndex === postsData.length - 1}
+        disabled={currentIndex === posts.length - 1}
         aria-label="Next post"
       >
         <FaArrowRight />
@@ -95,15 +97,28 @@ const PostModal = ({ post, onClose }) => {
   );
 };
 
-// PropTypes Validation
 PostModal.propTypes = {
   post: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    type: PropTypes.oneOf(["image", "video"]).isRequired,
-    content: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
     caption: PropTypes.string,
+    thumbnail_url: PropTypes.string,
+    video_url: PropTypes.string,
+    is_video: PropTypes.bool,
   }).isRequired,
   onClose: PropTypes.func.isRequired,
+  posts: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      caption: PropTypes.string,
+      thumbnail_url: PropTypes.string,
+      video_url: PropTypes.string,
+      is_video: PropTypes.bool,
+    })
+  ).isRequired,
+};
+
+PostModal.defaultProps = {
+  posts: [],
 };
 
 export default PostModal;

@@ -1,11 +1,48 @@
-import Posts from "./components/posts/Posts"
+import Posts from "./components/posts/Posts";
+import Profile from "./components/profile/Profile";
+import "./App.css";
+import Navbar from "./components/navbar/Navbar";
+import { useState, Suspense } from "react";
+import { useTheme } from "./context/useTheme";
+
+
+const ThemeToggler = () => {
+  const { theme, toggleTheme } = useTheme(); // Assuming useTheme is defined elsewhere
+
+  return (
+    <div className="theme-toggler">
+      <div
+        className={`toggle ${theme === "light" ? "light" : "dark"}`}
+        onClick={toggleTheme}
+      >
+        <div className="toggle-circle" />
+      </div>
+    </div>
+  );
+};
+
 
 const App = () => {
-  return (
-    <div>
-      <Posts />
-    </div>
-  )
-}
+  const [selectedResult, setSelectedResult] = useState({});
+  const { theme } = useTheme();
 
-export default App
+
+  const handleSelectedResult = (result) => {
+    setSelectedResult(result);
+  };
+
+
+  return (
+    <div className={`app ${theme}`}>
+      <ThemeToggler />
+      <Navbar onResultSelected={handleSelectedResult}>
+        <Profile user={selectedResult} />
+        <Suspense fallback={<div>Loading...</div>}>
+          <Posts user={selectedResult} />
+        </Suspense>
+      </Navbar>
+    </div>
+  );
+};
+
+export default App;

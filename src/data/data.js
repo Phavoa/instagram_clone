@@ -236,7 +236,8 @@ export const userData = {
     {
       id: 16,
       type: "video",
-      content: Video2,
+      content: "https://scontent-dus1-1.cdninstagram.com/o1/v/t16/f2/m86/AQPiWdfRZiLcmTk1p-1XZz_gL_hzVLBHiWZv9KvHS-8oKpimDvuBgDN8GN228C_xNsVq3jM6Pvbw0WNmoV0i7xrmu9JNPczRP7kbmTE.mp4?efg=eyJ4cHZfYXNzZXRfaWQiOjkyMDUzNzEzOTYxMzQxNywidmVuY29kZV90YWciOiJ4cHZfcHJvZ3Jlc3NpdmUuSU5TVEFHUkFNLkNMSVBTLkMzLjcyMC5kYXNoX2Jhc2VsaW5lXzFfdjEifQ&_nc_ht=scontent-dus1-1.cdninstagram.com&_nc_cat=107&vs=f9e8cdf5a93c299d&_nc_vs=HBksFQIYUmlnX3hwdl9yZWVsc19wZXJtYW5lbnRfc3JfcHJvZC83NzQ3QUVDOUEzRDdDNjlEMjlGOTdBOTRDRUU1NkFCNl92aWRlb19kYXNoaW5pdC5tcDQVAALIAQAVAhg6cGFzc3Rocm91Z2hfZXZlcnN0b3JlL0dNN0M2UnZBelBHZjdob0RBSU4yX2QwbDE2VVRicV9FQUFBRhUCAsgBACgAGAAbAogHdXNlX29pbAExEnByb2dyZXNzaXZlX3JlY2lwZQExFQAAJtK7rJOozqIDFQIoAkMzLBdAQZm6XjU_fRgSZGFzaF9iYXNlbGluZV8xX3YxEQB1_gcA&ccb=9-4&oh=00_AYA7BHJSLVVGcprh5rbAO_R1y3G4qI4gWtmFYEBqquJxtQ&oe=6760C4F0&_nc_sid=1d576d",
+      thubnail_url: "https://scontent-dus1-1.cdninstagram.com/v/t51.2885-15/469256867_18446106646073416_6254897214334809364_n.jpg?stp=dst-jpg_e15_p480x480_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6ImltYWdlX3VybGdlbi43MjB4MTI4MC5zZHIuZjc1NzYxLmRlZmF1bHRfY292ZXJfZnJhbWUifQ&_nc_ht=scontent-dus1-1.cdninstagram.com&_nc_cat=1&_nc_ohc=TcrF-_u7cwsQ7kNvgF7iGgz&_nc_gid=7705cd511c25474cada639483c1e0a30&edm=ABmJApABAAAA&ccb=7-5&ig_cache_key=MzUxNTgyMTk5NjMzODU4Mzk0NA%3D%3D.3-ccb7-5&oh=00_AYCIACFP81l8-TwTwtm4kLRjLHlL38pg4Xd4k0DUXj3hzA&oe=6764EA8A&_nc_sid=b41fef",
       caption: "Building cool stuff! 🚀",
       likes: 700,
       hashtags: ["#softwareengineering", "#videos", "#developer"],

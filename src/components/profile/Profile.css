@@ -1,0 +1,241 @@
+:root {
+  --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif;
+  --transition-duration: 0.3s;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.8rem;
+  --font-size-md: 1.5rem;
+  --font-size-sm: 0.9rem;
+  --font-size-xs: 0.8rem;
+  --border-radius: 5px;
+}
+
+
+.profile-container {
+  /* margin: 50px auto; */
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.profile-header-lg{
+ margin: auto;
+ min-width: 700px;
+
+}
+
+.profile-header-lg,
+.profile-header-sm-md {
+  display: flex;
+  /* justify-content: space-between; */
+  gap: 20px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.profile-header-sm-md {
+  display: none;
+}
+
+
+.img-container {
+  flex-grow: 1;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+
+  gap: 20px;
+  max-width: 1005;
+}
+
+.img-container img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 2px solid var(--border-color);
+  object-fit: cover;
+  transition: transform var(--transition-duration),
+    box-shadow var(--transition-duration);
+}
+
+.img-container img:hover {
+  transform: scale(1.1);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.profile-details {
+  flex-grow: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.top-row {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.username {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+.button {
+  padding: 8px 15px;
+  font-size: var(--font-size-sm);
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  border: 1px solid var(--border-color);
+  background: none;
+  color: var(--primary-color);
+  transition: background-color var(--transition-duration), transform 0.2s,
+    box-shadow var(--transition-duration);
+}
+
+.button:hover {
+  background-color: var(--button-hover-bg);
+  transform: translateY(-2px);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.stats {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.stats div {
+  font-size: var(--font-size-sm);
+  color: var(--primary-color);
+}
+
+.stats .bold {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.bio {
+  color: var(--primary-color);
+}
+
+.bio strong {
+  font-weight: 600;
+  font-size: var(--font-size-base);
+}
+
+.bio p {
+  font-size: var(--font-size-xs);
+  margin: 5px 0;
+  max-width: 200px;
+  text-align: wrap;
+}
+
+.bio a {
+  color: var(--link-color);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color var(--transition-duration);
+}
+
+.bio a:hover {
+  text-decoration: underline;
+  color: var(--primary-color);
+}
+
+.followed-by {
+  font-size: var(--font-size-xs);
+  color: var(--secondary-color);
+}
+
+.followed-by strong {
+  color: var(--primary-color);
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+
+  .profile-header-lg {
+    display: none;
+  }
+
+  .profile-details {
+    width: 100%;
+  }
+
+  .highlights-container-lg {
+    display: none;
+  }
+
+  .highlights-container-sm-md {
+    display: inline-block;
+    overflow-x: hidden;
+    max-width: 95vw;
+  }
+
+  .profile-header-sm-md {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding: 0 10px;
+  }
+
+  .img-container {
+    justify-content: start;
+    margin: 30px 0;
+    flex-grow: 1;
+  }
+
+  .img-container img {
+    width: 120px;
+    height: 120px;
+  }
+
+  .profile-details {
+    width: 100%;
+  }
+  .username {
+    font-size: var(--font-size-md);
+  }
+
+  .top-row{
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .username-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+  }
+
+
+
+  .buttons {
+    display: flex;
+    gap: 10px;
+  }
+
+  .stats {
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+
+  }
+
+  .bio p,
+  .stats div {
+    font-size: var(--font-size-xs);
+  }
+}
+
+/* Accessibility: */
+a:focus,
+button:focus {
+  outline: 2px solid var(--primary-color);
+}
