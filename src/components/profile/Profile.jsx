@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { FaUser } from "react-icons/fa";
 import './Profile.css';
 
 const Profile = () => {
@@ -21,10 +22,11 @@ const Profile = () => {
             <h2 className="username">mediamodifier</h2>
               <button className='button'>Send a message</button>
               <button>
-                &#x2713; 
+                &#x2713;
+                <FaUser />
               </button>
               <div className="dropdown">
-                <button className="menu" onClick={toggleDropdown}>▼</button>
+                <button className="menu" onClick={toggleDropdown}><RiArrowDropDownLine /></button>
                 {isDropdownOpen && (
                   <div className="dropdown-menu">
                     <ul>
@@ -35,7 +37,7 @@ const Profile = () => {
                   </div>
                 )}
               </div>
-              <div className='menu'>...</div>
+              <div className='menu'><BsThreeDots /></div>
             </div>
 
           <div className="stats">
