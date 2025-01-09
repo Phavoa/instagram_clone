@@ -147,3 +147,10 @@
     width: 100%;
   }
 }
+
+
+@media screen and (max-width: 356px) {
+  .navbar-container{
+    border: 2px solid red;
+  }
+}

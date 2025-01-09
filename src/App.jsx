@@ -2,7 +2,7 @@ import Posts from "./components/posts/Posts";
 import Profile from "./components/profile/Profile";
 import "./App.css";
 import Navbar from "./components/navbar/Navbar";
-import { useState, Suspense } from "react";
+import { useState } from "react";
 import { useTheme } from "./context/useTheme";
 
 
@@ -37,9 +37,7 @@ const App = () => {
       <ThemeToggler />
       <Navbar onResultSelected={handleSelectedResult}>
         <Profile user={selectedResult} />
-        <Suspense fallback={<div>Loading...</div>}>
-          <Posts user={selectedResult} />
-        </Suspense>
+        <Posts user={selectedResult} />
       </Navbar>
     </div>
   );

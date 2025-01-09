@@ -63,16 +63,17 @@
   .theme-toggler {
     position: fixed;
     top: 15px;
-    right: 20px;
+    right: 10px;
     display: flex;
     align-items: center;
     gap: 10px;
     cursor: pointer;
+    z-index: 1000;
   }
   
   .toggle {
-    width: 50px;
-    height: 25px;
+    width: 40px;
+    height: 20px;
     border-radius: 50px;
     background-color: #ddd;
     position: relative;

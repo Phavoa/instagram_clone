@@ -66,7 +66,7 @@
 
 .post-item {
   /* display: flex; */
-  position: relative;
+  /* position: relative; */
   overflow: hidden;
   cursor: pointer;
   transition: transform var(--transition-speed);
@@ -77,7 +77,7 @@
   height: 300px;
   object-fit: cover;
   box-shadow:  0 4px 8px rgba(0, 0, 0, 0.1);
-
+  transition-duration: 0.2s;
 }
 
 .post-content:hover {
@@ -128,11 +128,6 @@
 }
 
 @media (max-width: 768px) {
-  .profile-page {
-    margin-bottom: 40px;
-    padding: 0;
-  }
-
   .post-navigation button {
     width: 100%;
   }
@@ -144,6 +139,7 @@
   .post-grid {
     margin-top: -20px;
     gap: 2px;
+    margin: 0 auto;
   }
 
   .post-item {
