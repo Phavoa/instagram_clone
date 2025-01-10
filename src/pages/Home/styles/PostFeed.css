@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+body {
+  /* padding: 25px; */
+  margin: 0;
+  font-family: 'roboto';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.body-container{
+  /* position: relative; */
+  /* height: 100vh; */
+  /* margin: 20px; */
+}
+.post-container{
+  width: 490px;
+  /* width: 470px; */
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  padding-top: 0px;
+  padding: 0px;
+  /* position: absolute; */
+  /* top: 50%; */
+  /* left: 50%; */
+  /* transform: translate(-50%, -50%); */
+ 
+}
+main{
+  padding: 10px;
+  
+}
+img.postImage{
+  width: 450px;
+}
+header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--color-border);
+  border-radius: 7px;
+  margin-bottom: 10px;
+  padding: 0px 15px;
+  
+}
+.profile{
+  display: flex;
+  align-items: center;
+}
+.profile img{
+  width: 34px;
+  height: 34px;
+  margin-right: 10px;
+}
+.profile p{
+  font-weight: bold;
+}
+img.menuIcon{
+  width: 18px;
+  height: 4px;
+}
+.actionSection{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 15px;
+}
+.reactionSection img{
+  margin: 8px;
+  margin-bottom: 0px;
+}
+
+img.bookmark{
+  width: 19px;
+  height: 20px;
+}
+.caption{
+  width: 350px;
+  font-size: 14px;
+  font-weight: bold;
+
+  span{
+    font-weight: lighter; 
+    color: var(--color-text);
+  }
+  }
+  .viewComments{
+    color: var(--color-text);
+    font-size: 14px;
+  }
+.time{
+  font-size: 11px;
+  color: var(--color-text);
+}
+.writeComment{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 15px;
+  font-size: 14px;
+}
+.writeComment img{
+  width: 25px;
+  height: 27px;
+  margin-right: 15px;
+  
+}
+.writeComment p{
+  color: lightblue;
+  font-weight: 500;
+}
+.addAComment{
+  display: flex;
+  align-items: center;
+
+  p{
+    color: var(--color-text);
+    font-weight: 400;
+  }
+}

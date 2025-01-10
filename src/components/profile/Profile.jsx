@@ -7,6 +7,7 @@ import HighLight from "../highLight/HighLight";
 import { useEffect, useState } from "react";
 import { fetchFromApi } from "../../utils/fetchFromApi";
 import { MdVerified } from "react-icons/md";
+import { useParams } from "react-router-dom";
 
 // Bio component to display user's full name and bio description
 const Bio = ({ fullName, bio }) => (
@@ -78,10 +79,12 @@ FollowedBy.propTypes = {
 const Profile = ({ user }) => {
   const [userInfo, setUserInfo] = useState(null);
 
+  const{ username_or_id} = useParams();
+  console.log(username_or_id)
   useEffect(() => {
     const fetchUserInfo = async () => {
       try {
-        const usernameOrId = user?.id || "mrbeast";
+        const usernameOrId = user?.id || username_or_id;
         const { data } = await fetchFromApi(
           `v1/info?username_or_id_or_url=${usernameOrId}`
         );
@@ -156,7 +159,7 @@ const Profile = ({ user }) => {
       </div>
 
       <div className="highlights-container-lg">
-        <HighLight userHighlight={user?.id || "mrbeast"} />
+        <HighLight userHighlight={user?.id || username_or_id} />
       </div>
 
       <div className="profile-header-sm-md">
@@ -196,7 +199,7 @@ const Profile = ({ user }) => {
             <FollowedBy followedBy={profileData.followedBy} />
 
             <div className="highlights-container-sm-md">
-              <HighLight userHighlight={user?.id || "mrbeast"} />
+              <HighLight userHighlight={user?.id || username_or_id} />
             </div>
 
             <Stats
