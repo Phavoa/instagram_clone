@@ -1,10 +1,8 @@
-import Posts from "./components/posts/Posts";
-import Profile from "./components/profile/Profile";
 import "./App.css";
-import Navbar from "./components/navbar/Navbar";
-import { useState } from "react";
 import { useTheme } from "./context/useTheme";
-
+import { Route, Routes } from "react-router-dom";
+import Home from "./pages/Home/Home";
+import ProfilePage from "./pages/Profile/ProfilePage";
 
 const ThemeToggler = () => {
   const { theme, toggleTheme } = useTheme(); // Assuming useTheme is defined elsewhere
@@ -21,24 +19,19 @@ const ThemeToggler = () => {
   );
 };
 
-
 const App = () => {
-  const [selectedResult, setSelectedResult] = useState({});
   const { theme } = useTheme();
-
-
-  const handleSelectedResult = (result) => {
-    setSelectedResult(result);
-  };
 
 
   return (
     <div className={`app ${theme}`}>
       <ThemeToggler />
-      <Navbar onResultSelected={handleSelectedResult}>
-        <Profile user={selectedResult} />
-        <Posts user={selectedResult} />
-      </Navbar>
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+
+        <Route path="/:username_or_id" element={<ProfilePage />} />
+      </Routes>
     </div>
   );
 };

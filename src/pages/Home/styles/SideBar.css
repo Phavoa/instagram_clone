@@ -1,0 +1,278 @@
+.sidebar-container{
+    width: 400px;
+    height: 456.19px;
+    /* margin-top: 151.81px; */
+    margin-top: 80px;
+    /* margin-left: 806.54px; */
+    gap: 0px;
+    opacity: 0px;
+    /* background-color: rgb(16, 55, 88); */
+    
+    .header-container{
+        width: 397px;
+        height: 56px;
+        /* margin-top: 151.81px;
+        margin-left: 807.04px; */
+        /* margin: 50px; */
+        gap: 15px;
+        opacity: 0px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+        .header-logo-wrapper{
+            width: Hug (68px)px;
+            height: Hug (56px)px;
+            padding: 0px 12px 0px 0px;
+            gap: 10px;
+            opacity: 0px;
+            
+            .header-logo{
+                width: 56px;
+                height: 56px;
+                gap: 0px;
+                /* border-radius: 50px 0px 0px 0px; */
+                opacity: 0px;
+                box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.1);
+                
+            }
+        }
+
+        .header-content{
+            width: Hug (230px)px;
+            height: Hug (57px)px;
+            left: 68px;
+            padding: 6px 0px 6px 0px;
+            gap: 8px;
+            opacity: 0px;
+            display: flex;
+            flex-direction: column;
+
+            .header-p1{
+                width: Hug (116px)px;
+                height: Hug (19px)px;
+                padding: 0px 0px 0px 12px;
+                gap: 10px;
+                opacity: 0px;                
+            }
+
+            .header-p2{
+                width: Hug (210px)px;
+                height: Hug (18px)px;
+                padding: 0px 0px 0px 12px;
+                gap: 10px;
+                opacity: 0px;  
+                color: rgba(0, 0, 0, 0.5)              
+            }
+        }
+
+        .header.switch{
+            width: Hug (44px)px;
+            height: Hug (56px)px;
+            left: 293px;
+            padding: 20px 0px 20px 8px;
+            gap: 10px;
+            opacity: 0px;
+            
+            .switch{
+                width: 36px;
+                height: 16px;
+                gap: 0px;
+                opacity: 0px;
+                font-family: Segoe UI;
+                font-size: 12px;
+                font-weight: 600;
+                line-height: 16px;
+                text-align: left;
+                text-underline-position: from-font;
+                text-decoration-skip-ink: none;
+                color: rgba(0, 149, 246, 1);                  
+            }
+        }
+    }
+
+    .sugg-container{
+        width: 400px;
+        height: 20px;
+        margin-top: 20px;
+        margin-left: 20px;
+        padding: 0px 1.5px 0px 0px;
+        gap: 70px;
+        opacity: 0px;
+        display: flex;
+        
+        .sugg-p1{
+            width: 250px;
+            height: 18px;
+            top: -0.94px;
+            gap: 0px;
+            opacity: 0px;
+            font-family: Segoe UI;
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 18px;
+            text-align: left;
+            text-underline-position: from-font;
+            text-decoration-skip-ink: none;
+            color: rgba(142, 142, 142, 1);         
+        }
+
+        .sugg-p2{
+            width: 70px;
+            height: 16px;
+            top: 0.06px;
+            left: 300.5px;
+            gap: 0px;
+            opacity: 0px;
+            font-family: Segoe UI;
+            font-size: 12px;
+            font-weight: 600;
+            line-height: 16px;
+            text-align: left;
+            text-underline-position: from-font;
+            text-decoration-skip-ink: none;
+            color: rgba(38, 38, 38, 1);
+                            
+        }
+    }
+
+
+    .follows-container{
+        width: 400px;
+        height: Hug (256px)px;
+        margin-top: 7px;
+        margin-left: 30px;
+        padding: 8px 0px 8px 0px;
+        gap: 0px;
+        opacity: 0px;
+        
+        .follower-profile-container{
+            width: Hug (293px)px;
+            height: Hug (48px)px;
+            padding: 8px 0px 8px 0px;
+            gap: 5px;
+            opacity: 0px;
+            display: flex;            
+
+            .pp-container{
+                width: Hug (44px)px;
+                height: Hug (32px)px;
+                padding: 0px 12px 0px 0px;
+                gap: 10px;
+                opacity: 0px;
+
+                .pp{
+                    width: 35px;
+                    height: 35px;
+                    gap: 0px;
+                    /* border-radius: 32px 0px 0px 0px; */
+                    opacity: 0px;                    
+                }
+            }
+            
+            .profile-content-container{
+                width: 240px;
+                height: 32px;
+                margin-left: -5px;
+                margin-bottom: 5px;
+                padding: 1px 0px 1px 0px;
+                gap: 8px;
+                opacity: 0px;
+                
+                .profile-content1{
+                    width: Fixed (198px)px;
+                    height: Hug (11px)px;
+                    top: 1px;
+                    gap: 10px;
+                    opacity: 0px;
+                    color: rgba(50, 50, 50, 1);
+                }
+
+                .profile-content2{
+                    width: Fixed (198px)px;
+                    height: Hug (11px)px;
+                    top: 20px;
+                    gap: 10px;
+                    opacity: 0px;
+                    color: rgba(142, 142, 142, 1); 
+                }
+            }
+
+
+            .follow{
+                width: Hug (44px)px;
+                height: Hug (31px)px;
+                margin-left: -12px;
+                padding: 10px 0px 10px 8px;
+                gap: 10px;
+                opacity: 0px;
+                
+                .follow-text{
+                    width: 36px;
+                    height: 11px;
+                    gap: 0px;
+                    opacity: 0px;
+                    font-family: Segoe UI;
+                    font-size: 12px;
+                    font-weight: 600;
+                    line-height: 11px;
+                    text-align: left;
+                    text-underline-position: from-font;
+                    text-decoration-skip-ink: none;
+                    color: rgba(0, 149, 246, 1);
+                                        
+                }
+            }
+        }
+    }
+
+
+    .footer-container{
+        width: Hug (293px)px;
+        height: Fixed (88px)px;
+        margin-top: 20px;
+        margin-left: 35px;
+        padding: 12px 0px 38px 0px;
+        gap: 12px;
+        opacity: 0px;
+        
+        .footer-content-container{
+            width: Hug (293px)px;
+            height: Hug (42px)px;
+            padding: 0px 0px 16px 0px;
+            gap: 10px;
+            opacity: 0px;
+            display: flex;
+            flex-wrap: wrap;
+            color: rgba(142, 142, 142, 1);            
+        }
+
+        .last-footer{
+            width: 293px;
+            height: 13px;
+            padding: 0px 129.25px 0px 0px;
+            gap: 0px;
+            opacity: 0px;
+            margin-top: 10px;
+            
+            .last-footer-text{
+                width: 164px;
+                height: 13px;
+                top: -0.26px;
+                left: -0.25px;
+                gap: 0px;
+                opacity: 0px;
+                font-family: Segoe UI;
+                font-size: 11px;
+                font-weight: 400;
+                line-height: 13px;
+                text-align: left;
+                text-underline-position: from-font;
+                text-decoration-skip-ink: none;
+                color: rgba(199, 199, 199, 1);
+                                 
+            }
+        }
+    }
+}
+

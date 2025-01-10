@@ -103,6 +103,8 @@ const Navbar = ({ children, onResultSelected }) => {
   const [removedSearch, setRemovedSearch] = useState(false);
   const { theme } = useTheme(); // Assuming useTheme is defined elsewhere
 
+  console.log(searchResults)
+
   // Debounced API call to reduce the number of API requests
   const fetchUsersByUserName = debounce(async (searchInput) => {
     const options = {
@@ -184,7 +186,7 @@ const Navbar = ({ children, onResultSelected }) => {
         <button>
           <IoIosArrowBack />
         </button>
-        <p>Username</p>
+        <p>user</p>
       </nav>
 
       {children}
