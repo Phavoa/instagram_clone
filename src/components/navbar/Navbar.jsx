@@ -24,6 +24,7 @@ import debounce from "lodash.debounce"; // Debounce to optimize API calls
 import { X } from "lucide-react";
 
 import { useTheme } from "../../context/useTheme";
+import { useNavigate, useParams } from "react-router-dom";
 
 const icons = [Home, Chat, NewPost, FindPeople, Heart];
 const iconsDM = [HomeDM, ChatDM, NewPostDM, FindPeopleDM, HeartDM];
@@ -103,7 +104,7 @@ const Navbar = ({ children, onResultSelected }) => {
   const [removedSearch, setRemovedSearch] = useState(false);
   const { theme } = useTheme(); // Assuming useTheme is defined elsewhere
 
-  console.log(searchResults)
+  console.log(searchResults);
 
   // Debounced API call to reduce the number of API requests
   const fetchUsersByUserName = debounce(async (searchInput) => {
@@ -141,6 +142,13 @@ const Navbar = ({ children, onResultSelected }) => {
     return () => fetchUsersByUserName.cancel();
   }, [search]);
 
+  const { username_or_id } = useParams();
+
+  const navigate = useNavigate();
+  const goBack = () => {
+    navigate(-1); 
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     setRemovedSearch(false); // Show search results when search is not empty
@@ -152,9 +160,13 @@ const Navbar = ({ children, onResultSelected }) => {
       <nav className="navbar-container">
         <div className="logo">
           {theme === "light" ? (
-            <img src={InstagramIcon} alt="Instagram Logo" />
+            <a href="/">
+              <img src={InstagramIcon} alt="Instagram Logo" />
+            </a>
           ) : (
-            <img src={InstagramIconDM} alt="Instagram Logo" />
+            <a href="/">
+              <img src={InstagramIconDM} alt="Instagram Logo" />
+            </a>
           )}
         </div>
 
@@ -183,10 +195,10 @@ const Navbar = ({ children, onResultSelected }) => {
 
       {/* Mobile Navbar */}
       <nav className="navbar-sm-mb">
-        <button>
+        <button onClick={goBack}>
           <IoIosArrowBack />
         </button>
-        <p>user</p>
+        <p>{username_or_id}</p>
       </nav>
 
       {children}
