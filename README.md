@@ -19,7 +19,7 @@ Below are the talented individuals contributing to this project for group 2:
 
 | Name                | GitHub Username       | TechBridge ID |
 |---------------------|-----------------------|---------------|
-| Aduragbemi 070      | [Salemori](https://github.com/Salemori) | 070           |
+| Aduragbemi Oduntan  | [Salemori](https://github.com/Salemori) | 070           |
 | Alli Toheeb         | [Superpen-Dev](https://github.com/Superpen-Dev) | 115           |
 | AbdulMuiz Jimoh     | [Muayyad822](https://github.com/Muayyad822) | 057           |
 | Kehinde Imani       | [AskKenImani](https://github.com/AskKenImani) | 055           |
