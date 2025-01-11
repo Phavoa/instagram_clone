@@ -79,8 +79,8 @@ FollowedBy.propTypes = {
 const Profile = ({ user }) => {
   const [userInfo, setUserInfo] = useState(null);
 
-  const{ username_or_id} = useParams();
-  console.log(username_or_id)
+  const { username_or_id } = useParams();
+  // console.log(username_or_id);
   useEffect(() => {
     const fetchUserInfo = async () => {
       try {

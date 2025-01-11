@@ -162,6 +162,9 @@
 
   .profile-details {
     width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: auto;
   }
 
   .highlights-container-lg {
@@ -174,12 +177,15 @@
     max-width: 97vw;
     padding-right: 2px;
     margin-right: 10px;
+    
+
   }
 
   .profile-header-sm-md {
     display: flex;
     flex-direction: column;
     gap: 30px;
+
   }
 
   .img-container {
@@ -187,6 +193,7 @@
     justify-content: start;
     margin: 30px 0;
     flex-grow: 1;
+
   }
 
   .img-container img {
@@ -196,6 +203,15 @@
 
   .profile-details {
     width: 100%;
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+
+  }
+
+  .bio strong, .bio a, .followed-by p {
+    display: flex;
+    justify-content: center;
   }
   .username {
     font-size: var(--font-size-md);
@@ -204,6 +220,7 @@
   .top-row {
     flex-direction: column;
     gap: 10px;
+
   }
 
   .username-container {
@@ -211,6 +228,7 @@
     justify-content: space-between;
     align-items: center;
     gap: 10px;
+
   }
 
   .buttons {
@@ -224,11 +242,13 @@
     padding: 10px 0;
     border-top: 1px solid var(--border-color);
     border-bottom: 1px solid var(--border-color);
+
   }
 
   .bio p,
   .stats div {
     font-size: var(--font-size-xs);
+    margin: auto;
   }
 }
 
@@ -243,7 +263,7 @@ button:focus {
   .img-container {
     flex-direction: column;
     width: 100%;
-    justify-content: start;
+    justify-content: center;
     margin: 30px 0;
     flex-grow: 1;
   }

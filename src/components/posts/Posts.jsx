@@ -6,16 +6,19 @@ import { FaTh, FaPlayCircle, FaUserTag } from "react-icons/fa";
 import PostGrid from "../custom_ui/postGrid/PostGrid";
 import PostModal from "../custom_ui/postModal/PostModal";
 import { fetchFromApi } from "../../utils/fetchFromApi";
+import { useParams } from "react-router-dom";
 
 const Posts = ({ user }) => {
   const [posts, setPosts] = useState([]);
   const [selectedPost, setSelectedPost] = useState(null);
   const [activeTab, setActiveTab] = useState("POSTS");
 
+  const { username_or_id } = useParams();
+
   // Memoized function to fetch posts
   const fetchPosts = useCallback(async () => {
     try {
-      const usernameOrId = user?.username || "mrbeast"; // Fallback to "mrbeast"
+      const usernameOrId = user?.username || username_or_id; // Fallback to "mrbeast"
       const { data } = await fetchFromApi(`v1.2/posts?username_or_id_or_url=${usernameOrId}`);
       setPosts(data.items || []); // Safeguard if `data.items` is undefined
     } catch (error) {
