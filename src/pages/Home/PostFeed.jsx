@@ -15,7 +15,7 @@ const PostFeed = ({
     postImage,
     likes,
     caption,
-    // comment,
+    comment,
     duration,
 }) => {
     const navigate = useNavigate();
@@ -99,7 +99,7 @@ const PostFeed = ({
                     <div className="white-bg">
                         <div className="space_below white-bg">
                             <a className="gray white-bg" href="#">
-                                View all 8 comments
+                                View all {comment} comments
                             </a>
                         </div>
                         <div className="white-bg">

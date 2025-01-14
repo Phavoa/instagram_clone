@@ -230,7 +230,7 @@ const HomePage = () => {
           </div>
 
           {/* Post Feed Section */}
-          <div>
+          <div className="post-container">
             {(followingPosts.length > 0 ? followingPosts : defaultPosts).map(
               (data, index) => (
                 <PostFeed
